@@ -26,7 +26,7 @@
     </div>
     <div class="ad">
       <h3>扫红包啦！赢取更多福利</h3>
-      <img src="../assets/redpackage.jpeg"/>
+      <img src="../assets/redpackage.jpeg" alt="直播游戏答题助手，赢取更多红包"/>
     </div>
   </div>
 </template>

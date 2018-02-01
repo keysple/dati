@@ -108,6 +108,7 @@
     color: white;
     display: inline-block;
     padding: 10px 20px;
+    z-index: 1000;
   }
 
   .nav {

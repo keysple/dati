@@ -1,9 +1,3 @@
-/**
- * 作用于哪些页面
- * 注明代码业务/功能说明
- * @date 2018/1/30
- * @authors ChengLN(chenglingna@erayt.com)
- */
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
