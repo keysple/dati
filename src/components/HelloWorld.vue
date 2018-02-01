@@ -60,8 +60,10 @@
     },
     methods: {
       getData() {
-        let ws = new WebSocket("ws://dati.laoshutv.com:9080/ws/xiguashipin");
-        // let ws = new WebSocket("ws://localhost:8181");
+        debugger
+        let platform = this.$route.params.name;
+        let ws = new WebSocket("ws://dati.laoshutv.com:9080/ws/"+platform);
+        // let ws = new WebSocket("ws://localhost:8182");
         const self = this;
         ws.onmessage = function (ev) {
           let data = JSON.parse(ev.data);
@@ -69,6 +71,7 @@
           data.answer = result;
           self.$store.dispatch('refresh', data);
         }
+
       },
       handleTabChange(val) {
         this.activeTab = val
@@ -122,11 +125,5 @@
   .content {
     width: 100%;
     margin: 0 auto;
-  }
-
-  .search {
-    float: right;
-    width: 75%;
-    min-height: 600px;
   }
 </style>

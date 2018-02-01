@@ -24,15 +24,15 @@
         <span class="inlineSpan">{{dati.sougou}}</span>
       </div>
     </div>
+    <div class="ad">
+      <h3>扫红包啦！赢取更多福利</h3>
+      <img src="../assets/redpackage.jpeg"/>
+    </div>
   </div>
 </template>
 <script>
   export default {
     name: "left",
-    data() {
-      return {
-      }
-    },
     computed:{
       dati:function () {
         return  this.$store.state.dati
@@ -83,11 +83,18 @@
 
   .inline {
     padding-right: 40px;
+    padding-left: 20px;
+    float: left;
   }
 
   .inlineSpan {
     padding: 3px 5px;
     background-color: #4caf50;
     border-radius: 5px;
+  }
+
+  .ad img{
+    height:160px;
+
   }
 </style>
