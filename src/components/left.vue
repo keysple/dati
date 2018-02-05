@@ -43,11 +43,7 @@
 </script>
 
 <style scoped>
-  .answer {
-    float: left;
-    width: 30%;
-    min-height: 600px;
-  }
+
 
   .answer .attention {
     color: red;
@@ -83,7 +79,6 @@
 
   .inline {
     padding-right: 40px;
-    padding-left: 20px;
     float: left;
   }
 
@@ -95,6 +90,5 @@
 
   .ad img{
     height:160px;
-
   }
 </style>

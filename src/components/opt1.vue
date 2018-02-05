@@ -1,19 +1,26 @@
 <template>
-  <div class="content">
-    <left></left>
-    <div class="search">
-      <iframe id="iframe" :src=preUrl+dati.question+option ></iframe>
-    </div>
+  <div>
+    <mu-row gutter>
+      <mu-col width="100" tablet="30" desktop="30">
+        <left></left>
+      </mu-col>
+      <mu-col width="100" tablet="70" desktop="70">
+        <div class="search">
+          <iframe id="iframe" :src=preUrl+dati.question+option style="padding:0px;width:100%;height: 700px;"></iframe>
+        </div>
+      </mu-col>
+    </mu-row>
   </div>
 </template>
 <script>
   import Left from "./left";
+
   export default {
     components: {Left},
     name: "opt1",
     data() {
       return {
-        preUrl:"https://www.baidu.com/s?wd="
+        preUrl: "https://www.baidu.com/s?wd="
       }
     },
     props: [
@@ -24,27 +31,8 @@
         return this.$store.state.dati
       }
     },
-    mounted() {
-      this.renderFrame();
-    },
-    methods: {
-      renderFrame() {
-        let iframe = document.getElementById('iframe');
-        iframe.width = (document.body.clientWidth)*0.7;
-        iframe.height = document.body.clientHeight;
-      }
-    }
   }
 </script>
 
 <style scoped>
-  .content {
-    margin-top: 10px;
-  }
-  .search {
-    float: right;
-    width: 70%;
-    min-height: 600px;
-  }
-
 </style>

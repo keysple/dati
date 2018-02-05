@@ -1,17 +1,23 @@
 <template>
   <div class="layout">
     <div class="header">
-      <div class="logo">
-        答题助手
-      </div>
-      <div class="nav">
-        <mu-tabs :value="activeTab" @change="handleTabChange" class="tab">
-          <mu-tab value="home" title="首页"/>
-          <mu-tab value="opt1" :title="dati.answers[0]" :class="{'comAnswer': dati.answers[0] == dati.answer}"/>
-          <mu-tab value="opt2" :title="dati.answers[1]" :class="{'comAnswer': dati.answers[1] == dati.answer}"/>
-          <mu-tab value="opt3" :title="dati.answers[2]" :class="{'comAnswer': dati.answers[2] == dati.answer}"/>
-        </mu-tabs>
-      </div>
+      <mu-row gutter>
+        <mu-col width="100" tablet="30" desktop="30">
+          <div class="logo" @click="changeToHome">
+            答题助手
+          </div>
+        </mu-col>
+        <mu-col width="100" tablet="70" desktop="70">
+          <div class="nav">
+            <mu-tabs :value="activeTab" @change="handleTabChange" class="tab">
+              <mu-tab value="home" title="首页"/>
+              <mu-tab value="opt1" :title="dati.answers[0]" :class="{'comAnswer': dati.answers[0] == dati.answer}"/>
+              <mu-tab value="opt2" :title="dati.answers[1]" :class="{'comAnswer': dati.answers[1] == dati.answer}"/>
+              <mu-tab value="opt3" :title="dati.answers[2]" :class="{'comAnswer': dati.answers[2] == dati.answer}"/>
+            </mu-tabs>
+          </div>
+        </mu-col>
+      </mu-row>
     </div>
     <div class="content">
       <div v-if="activeTab == 'home'">
@@ -36,9 +42,11 @@
   import opt3 from "./opt3";
   import Left from "./left";
   import Home from "./home";
+  import MuRow from "muse-ui/src/grid/row";
 
   export default {
     components: {
+      MuRow,
       Home,
       opt1,
       opt2,
@@ -60,10 +68,8 @@
     },
     methods: {
       getData() {
-        debugger
         let platform = this.$route.params.name;
-        let ws = new WebSocket("ws://dati.laoshutv.com:9080/ws/"+platform);
-        // let ws = new WebSocket("ws://localhost:8182");
+        let ws = new WebSocket("ws://dati.laoshutv.com:9080/ws/" + platform);
         const self = this;
         ws.onmessage = function (ev) {
           let data = JSON.parse(ev.data);
@@ -71,7 +77,6 @@
           data.answer = result;
           self.$store.dispatch('refresh', data);
         }
-
       },
       handleTabChange(val) {
         this.activeTab = val
@@ -90,6 +95,9 @@
           result = answers[2];
         }
         return result;
+      },
+      changeToHome() {
+        this.$router.push({name: 'Entry'})
       }
     }
   }
@@ -109,6 +117,7 @@
     display: inline-block;
     padding: 10px 20px;
     z-index: 1000;
+    cursor: pointer;
   }
 
   .nav {
@@ -119,7 +128,6 @@
 
   .tab {
     margin: 0 auto;
-    width: 400px;
     background-color: rgba(0, 0, 0, 0);
   }
 
